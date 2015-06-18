@@ -47,8 +47,8 @@ public class ElastiCacheMetricsProcessor implements MetricsProcessor {
 	
 	public Map<String, Double> createMetricStatsMapForUpload(NamespaceMetricStatistics namespaceMetricStats) {
 		Map<String, String> dimensionToMetricPathNameDictionary = new HashMap<String, String>();
-		dimensionToMetricPathNameDictionary.put("CacheClusterId", "Cache Cluster");
-		dimensionToMetricPathNameDictionary.put("CacheNodeId", "Cache Node");
+		dimensionToMetricPathNameDictionary.put(DIMENSIONS[0], "Cache Cluster");
+		dimensionToMetricPathNameDictionary.put(DIMENSIONS[1], "Cache Node");
 		
 		return MetricsProcessorHelper.createMetricStatsMapForUpload(namespaceMetricStats, 
 				dimensionToMetricPathNameDictionary, false);

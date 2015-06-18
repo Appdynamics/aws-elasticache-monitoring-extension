@@ -32,11 +32,14 @@ public class ElastiCacheMonitor extends SingleNamespaceCloudwatchMonitor<Configu
 			Configuration config) {
 		MetricsProcessor metricsProcessor = createMetricsProcessor(config);
 
-		return new NamespaceMetricStatisticsCollector(
-				config.getAccounts(),
-				config.getConcurrencyConfig(), 
-				config.getMetricsConfig(),
-				metricsProcessor);
+		return new NamespaceMetricStatisticsCollector
+				.Builder(config.getAccounts(),
+						config.getConcurrencyConfig(), 
+						config.getMetricsConfig(),
+						metricsProcessor)
+				.withCredentialsEncryptionConfig(config.getCredentialsDecryptionConfig())
+				.withProxyConfig(config.getProxyConfig())
+				.build();
 	}
 
 	@Override
