@@ -25,6 +25,14 @@ Captures ElastiCache statistics from Amazon CloudWatch and displays them in the 
 | | awsSecretKey | AWS Secret Key |  |
 | | displayAccountName | Display name used in metric path | "MyAWSElastiCache" |
 | | regions | Regions where elastiCache is registered | **Allowed values:**<br/>"ap-southeast-1",<br/>"ap-southeast-2",<br/>"ap-northeast-1",<br/>"eu-central-1",<br/>"eu-west-1",<br/>"us-east-1",<br/>"us-west-1",<br/>"us-west-2",<br/>"sa-east-1" |
+| **credentialsDecryptionConfig** | ----- | ----- | ----- |
+| | enableDecryption | If set to "true", then all aws credentials provided (access key and secret key) will be decrypted - see AWS Credentials Encryption section |  |
+| | decryptionKey | The key used when encypting the credentials |  |
+| **proxyConfig** | ----- | ----- | ----- |
+| | host | The proxy host (must also specify port) |  |
+| | port | The proxy port (must also specify host) |  |
+| | username | The proxy username (optional)  |  |
+| | password | The proxy password (optional)  |  |
 | **metricsConfig** | ----- | ----- | ----- |
 | metricTypes | | Fields under this section can be repeated for multiple metric types override |  |
 | | metricName | The metric name | "CPUUtilization" |
@@ -56,7 +64,17 @@ accounts:
   - awsAccessKey: "XXXXXXXX2"
     awsSecretKey: "XXXXXXXXXX2"
     displayAccountName: "TestAccount_2"
-    regions: ["eu-central-1","eu-west-1"]    
+    regions: ["eu-central-1","eu-west-1"]
+    
+credentialsDecryptionConfig:
+    enableDecryption: "false"
+    decryptionKey:
+    
+proxyConfig:
+    host: 
+    port:
+    username:
+    password:    
 
 metricsConfig:
     metricTypes:
@@ -81,6 +99,23 @@ concurrencyConfig:
 
 metricPrefix: "Custom Metrics|Amazon ElastiCache|"
 ~~~
+
+###AWS Credentials Encryption
+To set an encrypted awsAccessKey and awsSecretKey in config.yaml, follow the steps below:
+
+1. Download the util jar to encrypt the AWS Credentials from [here](https://github.com/Appdynamics/maven-repo/blob/master/releases/com/appdynamics/appd-exts-commons/1.1.2/appd-exts-commons-1.1.2.jar).
+2. Run command:
+
+   	~~~   
+   	java -cp appd-exts-commons-1.1.2.jar com.appdynamics.extensions.crypto.Encryptor EncryptionKey CredentialToEncrypt
+   	
+   	For example: 
+   	java -cp "appd-exts-commons-1.1.2.jar" com.appdynamics.extensions.crypto.Encryptor test myAwsAccessKey
+   	
+   	java -cp "appd-exts-commons-1.1.2.jar" com.appdynamics.extensions.crypto.Encryptor test myAwsSecretKey
+   	~~~
+   	
+3. Set the decryptionKey field in config.yaml with the encryption key used, as well as the resulting encrypted awsAccessKey and awsSecretKey in their respective fields.
 
 ##Metrics
 Typical metric path: **Application Infrastructure Performance|\<Tier\>|Custom Metrics|Amazon ElastiCache|\<Account Name\>|Cache Cluster|\<cache cluster id\>|Cache Node|\<cache node id\>** followed by the metrics defined in the link below:
