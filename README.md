@@ -118,7 +118,7 @@ To set an encrypted awsAccessKey and awsSecretKey in config.yaml, follow the ste
 3. Set the decryptionKey field in config.yaml with the encryption key used, as well as the resulting encrypted awsAccessKey and awsSecretKey in their respective fields.
 
 ##Metrics
-Typical metric path: **Application Infrastructure Performance|\<Tier\>|Custom Metrics|Amazon ElastiCache|\<Account Name\>|Cache Cluster|\<cache cluster id\>|Cache Node|\<cache node id\>** followed by the metrics defined in the link below:
+Typical metric path: **Application Infrastructure Performance|\<Tier\>|Custom Metrics|Amazon ElastiCache|\<Account Name\>|\<Region\>|Cache Cluster|\<cache cluster id\>|Cache Node|\<cache node id\>** followed by the metrics defined in the link below:
 
 - [Host-Level Metrics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CacheMetrics.HostLevel.html)
 - [Memcached Metrics](http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CacheMetrics.Memcached.html)
