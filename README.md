@@ -130,7 +130,7 @@ Always feel free to fork and contribute any changes directly via [GitHub](https:
 
 ##Community
 
-Find out more in the AppSphere community.
+Find out more in the [AppSphere](https://www.appdynamics.com/community/exchange/extension/aws-elasticache-monitoring-extension) community.
 
 ##Support
 
