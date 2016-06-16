@@ -33,6 +33,7 @@ Captures ElastiCache statistics from Amazon CloudWatch and displays them in the 
 | | port | The proxy port (must also specify host) |  |
 | | username | The proxy username (optional)  |  |
 | | password | The proxy password (optional)  |  |
+| **includeCacheClusters** | ----- | Filters metrics based on cache cluster names provided. Accepts regex patterns | ["portal-staging", "blog-*"] |
 | **metricsConfig** | ----- | ----- | ----- |
 | metricTypes | | Fields under this section can be repeated for multiple metric types override |  |
 | | metricName | The metric name | "CPUUtilization" |
@@ -75,6 +76,9 @@ proxyConfig:
     port:
     username:
     password:    
+
+#Filters metrics based on cache cluster names provided. Accepts regex patterns
+includeCacheClusters: ["portal-staging", "blog-*"]
 
 metricsConfig:
     metricTypes:
