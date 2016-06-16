@@ -13,7 +13,8 @@ proxyConfig:
     port: 8081
     username:
     password:
-    
+
+includeCacheClusters: ["portal-staging"]
 metricsConfig:
     metricTypes:
       - metricName: ""

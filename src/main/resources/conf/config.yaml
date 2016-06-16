@@ -19,6 +19,9 @@ proxyConfig:
     username:
     password:
 
+#Filters metrics based on cache cluster names provided. Accepts regex patterns
+includeCacheClusters: ["portal-staging", "blog-*"]
+
 # Global metrics config for all accounts
 metricsConfig:
 
