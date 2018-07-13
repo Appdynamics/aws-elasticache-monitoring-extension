@@ -35,7 +35,11 @@ concurrencyConfig:
 dimensions:
   - name: "CacheClusterId"
     displayName: "CacheClusterId"
-    values: ["portal-staging", "blog-*"]
+    values: ["eretail-demo", "corpsite-blog"]
+
+  - name: "CacheNodeId"
+    displayName: "CacheNodeId"
+    values: ["0001"]
 
 #Allowed values are Basic and Detailed. Refer https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch-new.html for more information
 # Basic will fire CloudWatch API calls every 5 minutes
