@@ -32,7 +32,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class ElastiCacheMonitor extends SingleNamespaceCloudwatchMonitor<Configuration> {
 
-    private static final Logger LOGGER = Logger.getLogger("com.singularity.extensions.aws.ElastiCacheMonitor");
+    private static final Logger LOGGER = Logger.getLogger(ElastiCacheMonitor.class);
 
     private static final String DEFAULT_METRIC_PREFIX = String.format("%s%s%s%s",
             "Custom Metrics", METRIC_PATH_SEPARATOR, "Amazon ElastiCache", METRIC_PATH_SEPARATOR);
