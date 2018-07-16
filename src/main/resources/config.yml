@@ -82,25 +82,25 @@ metricsConfig:
        - name: "FreeableMemory"
          alias: "FreeableMemory"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
          clusterRollUpType: "COLLECTIVE"
          delta: false
          multiplier: 1
        - name: "NetworkBytesIn"
          alias: "NetworkBytesIn"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "NetworkBytesOut"
          alias: "NetworkBytesOut"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "SwapUsage"
@@ -116,9 +116,9 @@ metricsConfig:
        - name: "ActiveDefragHits"
          alias: "ActiveDefragHits"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "BytesUsedForCache"
@@ -132,25 +132,25 @@ metricsConfig:
        - name: "CacheHits"
          alias: "CacheHits"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "CacheMisses"
          alias: "CacheMisses"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "CurrConnections"
          alias: "CurrConnections"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "EngineCPUUtilization"
@@ -164,9 +164,9 @@ metricsConfig:
        - name: "Evictions"
          alias: "Evictions"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "HyperLogLogBasedCmds"
@@ -180,17 +180,17 @@ metricsConfig:
        - name: "NewConnections"
          alias: "NewConnections"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "Reclaimed"
          alias: "Reclaimed"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "ReplicationBytes"
@@ -221,9 +221,9 @@ metricsConfig:
        - name: "CurrItems"
          alias: "CurrItems"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "GetTypeCmds"
@@ -295,49 +295,49 @@ metricsConfig:
        - name: "BytesReadIntoMemcached"
          alias: "BytesReadIntoMemcached"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "BytesUsedForCacheItems"
          alias: "BytesUsedForCacheItems"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "BytesWrittenOutFromMemcached"
          alias: "BytesWrittenOutFromMemcached"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "CasBadval"
          alias: "CasBadval"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "CasHits"
          alias: "CasHits"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "CasMisses"
          alias: "CasMisses"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "CmdFlush"
@@ -367,33 +367,33 @@ metricsConfig:
        - name: "CurrConnections"
          alias: "CurrConnections"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "CurrItems"
          alias: "CurrItems"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "DecrHits"
          alias: "DecrHits"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "DecrMisses"
          alias: "DecrMisses"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "DeleteHits"
@@ -407,57 +407,57 @@ metricsConfig:
        - name: "DeleteMisses"
          alias: "DeleteMisses"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "Evictions"
          alias: "Evictions"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "GetHits"
          alias: "GetHits"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "GetMisses"
          alias: "GetMisses"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "IncrHits"
          alias: "IncrHits"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "IncrMisses"
          alias: "IncrMisses"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "Reclaimed"
          alias: "Reclaimed"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        #Following metrics are available only post memcache 1.4.14
@@ -528,18 +528,18 @@ metricsConfig:
        - name: "TouchHits"
          alias: "TouchHits"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
          delta: false
          multiplier: 1
        - name: "TouchMisses"
          alias: "TouchMisses"
          statType: "ave"
-         aggregationType: "OBSERVATION"
-         timeRollUpType: "CURRENT"
-         clusterRollUpType: "COLLECTIVE"
-         delta: false
+         aggregationType: "AVERAGE"
+         timeRollUpType: "AVERAGE"
+         clusterRollUpType: "INDIVIDUAL"
+        delta: false
          multiplier: 1
        #AWS/ElastiCache namespace includes the following calculated cache-level metrics
        - name: "UnusedMemory"
