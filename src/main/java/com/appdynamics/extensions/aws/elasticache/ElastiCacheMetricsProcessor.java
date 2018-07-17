@@ -10,19 +10,20 @@ package com.appdynamics.extensions.aws.elasticache;
 
 import com.amazonaws.services.cloudwatch.AmazonCloudWatch;
 import com.amazonaws.services.cloudwatch.model.DimensionFilter;
-import com.amazonaws.services.cloudwatch.model.Metric;
-import com.appdynamics.extensions.aws.config.MetricType;
+import com.appdynamics.extensions.aws.config.Dimension;
+import com.appdynamics.extensions.aws.config.IncludeMetric;
+import com.appdynamics.extensions.aws.dto.AWSMetric;
 import com.appdynamics.extensions.aws.metric.NamespaceMetricStatistics;
 import com.appdynamics.extensions.aws.metric.StatisticType;
 import com.appdynamics.extensions.aws.metric.processors.MetricsProcessor;
 import com.appdynamics.extensions.aws.metric.processors.MetricsProcessorHelper;
+import com.appdynamics.extensions.aws.predicate.MultiDimensionPredicate;
+import com.google.common.collect.Lists;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.regex.Pattern;
+import java.util.concurrent.atomic.LongAdder;
 
 /**
  * @author Florencio Sarmiento
@@ -31,49 +32,38 @@ public class ElastiCacheMetricsProcessor implements MetricsProcessor {
 
     private static final String NAMESPACE = "AWS/ElastiCache";
 
-    private static final String[] DIMENSIONS = {"CacheClusterId", "CacheNodeId"};
+    private List<IncludeMetric> includeMetrics;
 
-    private List<MetricType> metricTypes;
+    private List<Dimension> dimensions;
 
-    private Pattern excludeMetricsPattern;
-
-    private List<String> includeCacheClusters;
-
-    public ElastiCacheMetricsProcessor(List<MetricType> metricTypes,
-                                       Set<String> excludeMetrics, List<String> includeCacheClusters) {
-        this.metricTypes = metricTypes;
-        this.excludeMetricsPattern = MetricsProcessorHelper.createPattern(excludeMetrics);
-        this.includeCacheClusters = includeCacheClusters;
+    public ElastiCacheMetricsProcessor(List<IncludeMetric> includeMetrics, List<Dimension> dimensions) {
+        this.includeMetrics = includeMetrics;
+        this.dimensions = dimensions;
     }
 
-    public List<Metric> getMetrics(AmazonCloudWatch awsCloudWatch, String accountName) {
+    public List<AWSMetric> getMetrics(AmazonCloudWatch awsCloudWatch, String accountName, LongAdder awsRequestsCounter) {
 
 
-        List<DimensionFilter> dimensions = new ArrayList<DimensionFilter>();
+        List<DimensionFilter> dimensionFilters = getDimensionFilters();
 
-        DimensionFilter dimensionFilter = new DimensionFilter();
-        dimensionFilter.withName(DIMENSIONS[0]);
+        MultiDimensionPredicate predicate = new MultiDimensionPredicate(dimensions);
 
-        dimensions.add(dimensionFilter);
-
-        CacheClusterNameMatcherPredicate predicate = new CacheClusterNameMatcherPredicate(includeCacheClusters);
-
-        return MetricsProcessorHelper.getFilteredMetrics(awsCloudWatch,
+        return MetricsProcessorHelper.getFilteredMetrics(awsCloudWatch, awsRequestsCounter,
                 NAMESPACE,
-                excludeMetricsPattern,
-                dimensions,
+                includeMetrics,
+                dimensionFilters,
                 predicate);
     }
 
-    public StatisticType getStatisticType(Metric metric) {
-        return MetricsProcessorHelper.getStatisticType(metric, metricTypes);
+    public StatisticType getStatisticType(AWSMetric metric) {
+        return MetricsProcessorHelper.getStatisticType(metric.getIncludeMetric(), includeMetrics);
     }
 
-    public Map<String, Double> createMetricStatsMapForUpload(NamespaceMetricStatistics namespaceMetricStats) {
+    public List<com.appdynamics.extensions.metrics.Metric> createMetricStatsMapForUpload(NamespaceMetricStatistics namespaceMetricStats) {
         Map<String, String> dimensionToMetricPathNameDictionary = new HashMap<String, String>();
-        dimensionToMetricPathNameDictionary.put(DIMENSIONS[0], "Cache Cluster");
-        dimensionToMetricPathNameDictionary.put(DIMENSIONS[1], "Cache Node");
-
+        for (Dimension dimension : dimensions) {
+            dimensionToMetricPathNameDictionary.put(dimension.getName(), dimension.getDisplayName());
+        }
         return MetricsProcessorHelper.createMetricStatsMapForUpload(namespaceMetricStats,
                 dimensionToMetricPathNameDictionary, false);
     }
@@ -82,4 +72,14 @@ public class ElastiCacheMetricsProcessor implements MetricsProcessor {
         return NAMESPACE;
     }
 
+    private List<DimensionFilter> getDimensionFilters() {
+
+        List<DimensionFilter> dimensionFilters = Lists.newArrayList();
+        for (Dimension dimension : dimensions) {
+            DimensionFilter dbDimensionFilter = new DimensionFilter();
+            dbDimensionFilter.withName(dimension.getName());
+            dimensionFilters.add(dbDimensionFilter);
+        }
+        return dimensionFilters;
+    }
 }
