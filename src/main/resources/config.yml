@@ -35,11 +35,11 @@ concurrencyConfig:
 dimensions:
   - name: "CacheClusterId"
     displayName: "CacheClusterId"
-    values: ["eretail-demo", "corpsite-blog"]
+    values: [".*"]
 
   - name: "CacheNodeId"
     displayName: "CacheNodeId"
-    values: ["0001"]
+    values: [".*"]
 
 #Allowed values are Basic and Detailed. Refer https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch-new.html for more information
 # Basic will fire CloudWatch API calls every 5 minutes
@@ -539,7 +539,7 @@ metricsConfig:
          aggregationType: "AVERAGE"
          timeRollUpType: "AVERAGE"
          clusterRollUpType: "INDIVIDUAL"
-        delta: false
+         delta: false
          multiplier: 1
        #AWS/ElastiCache namespace includes the following calculated cache-level metrics
        - name: "UnusedMemory"
