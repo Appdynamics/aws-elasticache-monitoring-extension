@@ -21,7 +21,9 @@ import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
 
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -54,8 +56,11 @@ public class ElastiCacheMonitor extends SingleNamespaceCloudwatchMonitor<Configu
     }
 
     @Override
-    protected int getTaskCount() {
-        return 3;
+    protected List<Map<String, ?>> getServers() {
+        Map<String, String> serversMap = new HashMap<String, String>();
+        List<Map<String, ?>> serversList = new ArrayList<Map<String, ?>>();
+        serversList.add(serversMap);
+        return serversList;
     }
 
 
