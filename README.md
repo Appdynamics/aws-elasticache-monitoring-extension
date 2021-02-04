@@ -228,6 +228,6 @@ Always feel free to fork and contribute any changes directly here on [GitHub](ht
    |Extension Version         |2.0.7       |
    |Controller Compatibility  |4.4 or Later|
    |Machine Agent             |4.5.13+     |
-   |Last Update               |6 May 2020  |
+   |Last Update               |4 Feb 2021  |
 
 List of changes to this extension can be found [here](https://github.com/Appdynamics/aws-elasticache-monitoring-extension/blob/master/CHANGELOG.md)
