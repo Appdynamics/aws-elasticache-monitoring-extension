@@ -569,3 +569,22 @@ concurrencyConfig:
 
 #prefix used to show up metrics in AppDynamics
 metricPrefix: "Custom Metrics|Amazon ElastiCache|"
+
+# Default information needs to be updated
+controllerInfo:
+  controllerHost: "controller"
+  controllerPort: 8080
+  account: "customer1"
+  username: "user1"
+  password: "welcome"
+  encryptedPassword: ""
+  encryptionKey: ""
+  controllerSslEnabled: false
+  enableOrchestration: false
+  uniqueHostId: ""
+  accountAccessKey: ""
+  machinePath: ""
+  simEnabled: true
+  applicationName: ""
+  tierName: ""
+  nodeName: ""
